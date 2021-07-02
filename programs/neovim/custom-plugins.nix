@@ -12,8 +12,8 @@
   vim-gruvbox = buildVimPlugin {
     name = "vim-gruvbox";
     src = builtins.fetchTarball {
-      url    = "https://github.com/morhetz/gruvbox/archive/v2.0.0.tar.gz";
-      sha256 = "14m6yyni31h1idb2979ccpy0prr47dyav8rracx653gq46xclm7h";
+      url    = "https://github.com/morhetz/gruvbox/archive/refs/tags/v3.0.1-rc.0.tar.gz";
+      sha256 = "01as1pkrlbzhcn1kyscy476w8im3g3wmphpcm4lrx7nwdq8ch7h1";
     }; 
   };
 

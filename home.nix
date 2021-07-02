@@ -8,9 +8,9 @@ let
     tig           
   ];
 
-  haskell-language-server = pkgs.haskellPackages.haskell-language-server.override { 
-    supportedGhcVersions = [ "884" "901" ]; 
-  };
+ # haskell-language-server = pkgs.haskellPackages.haskell-language-server.override { 
+ #   supportedGhcVersions = [ "884" "901" ]; 
+ # };
  
   haskellPkgs = with pkgs.haskellPackages; [
     # brittany            
@@ -25,10 +25,14 @@ let
 
   tmuxConf = builtins.readFile ./programs/tmux/.tmux.conf;
 
-  ghc = pkgs.haskell.compiler.ghc865;
+  # ghc = pkgs.haskell.compiler.ghc865;
 in
 {
   home.packages = with pkgs; [
+    # adoptopenjdk-hotspot-bin-11
+    # adoptopenjdk-bin
+    # adoptopenjdk-hotspot-bin-8
+#    adoptopenjdk-hotspot-bin-11
     aprutil
     awscli
     cabal-install
@@ -37,16 +41,26 @@ in
     fd
     ghc
     go
+    gnupg
     gradle
+    grpcui
+    grpcurl
+    haskell-language-server
     htop
     hugo
+    jhead
     jo
     jq
     maven
+    openjdk8
+    podman
     ripgrep
     rnix-lsp
+    skhd
+    solargraph
     tree
     vagrant
+    yabai
  ] ++ gitPkgs ++ haskellPkgs;
 
   imports = [
@@ -67,6 +81,7 @@ in
     extraPackages = epkgs: [
       epkgs.all-the-icons
       epkgs.company
+      epkgs.consult
       epkgs.counsel
       epkgs.doom-themes
       epkgs.doom-modeline
@@ -75,7 +90,10 @@ in
       epkgs.find-file-in-project
       epkgs.fira-code-mode
       epkgs.general
+      epkgs.highlight-indent-guides
       epkgs.ivy
+      epkgs.marginalia
+      epkgs.material-theme
       epkgs.smartparens
       epkgs.treemacs
       epkgs.treemacs-all-the-icons
@@ -97,9 +115,15 @@ in
       epkgs.magit
       epkgs.neotree
       epkgs.nix-mode
+      epkgs.protobuf-mode
+      epkgs.plantuml-mode
+      epkgs.selectrum
       epkgs.smartparens
       epkgs.swiper
+      # epkgs.vertico
       epkgs.vterm
+      epkgs.yaml
+      epkgs.yaml-mode
     ];
   };
 
