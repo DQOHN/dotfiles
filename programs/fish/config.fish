@@ -3,9 +3,13 @@ source $HOME/.dotfiles/programs/fish/nix.fish
 set -x PYENV_ROOT $HOME/.pyenv
 set -x PATH $PATH $PYENV_ROOT/bin
 
-eval (pyenv init - | source)
+# eval (pyenv init - | source)
 
 set -x PATH $PATH "$HOME/.local/share/bin"
+
+set -x JAVA_HOME "$HOME/.nix-profile"
+
+set -x PATH $PATH "$JAVA_HOME"
 
 set -x FZF_CTRL_T_COMMAND "fd --type f --ignore-file $HOME/.dotfiles/.gitignore --hidden --exclude .git"
 

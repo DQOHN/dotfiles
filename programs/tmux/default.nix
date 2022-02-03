@@ -13,20 +13,22 @@ in
     escapeTime = 0;
     keyMode = "vi";
     plugins = with plugins; [
-      { 
-        plugin = tpm;
-        extraConfig = ''
-          set -g @plugin 'tmux-plugins/tmux-pain-control'
-
-          set -g @plugin 'tmux-plugins/tmux-open'
-
-          set -g @plugin 'jimeh/tmux-themepack'
-          set -g @themepack 'powerline/double/green'
-        '';
+      {
+        plugin = pain-control;
       }
-       {
-         plugin = resurrect;
-         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      {
+        plugin = power-theme;
+      }
+      {
+        plugin = themepack;
+        extraConfig = "set -g @themepack 'powerline/default/green'";
+      }
+      {
+        plugin = open;
+      }
+      {
+        plugin = resurrect;
+        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
       }
     ];
     shortcut = "b";

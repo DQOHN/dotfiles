@@ -23,16 +23,12 @@ let
 
   fishConf = builtins.readFile ./programs/fish/config.fish;
 
-  tmuxConf = builtins.readFile ./programs/tmux/.tmux.conf;
+  # tmuxConf = builtins.readFile ./programs/tmux/.tmux.conf;
 
   # ghc = pkgs.haskell.compiler.ghc865;
 in
 {
   home.packages = with pkgs; [
-    # adoptopenjdk-hotspot-bin-11
-    # adoptopenjdk-bin
-    # adoptopenjdk-hotspot-bin-8
-#    adoptopenjdk-hotspot-bin-11
     aprutil
     awscli
     cabal-install
@@ -43,16 +39,17 @@ in
     go
     gnupg
     gradle
+    graphviz
     grpcui
     grpcurl
-    haskell-language-server
     htop
     hugo
     jhead
     jo
     jq
     maven
-    openjdk8
+    mysql
+    openjdk11
     podman
     ripgrep
     rnix-lsp
@@ -129,6 +126,15 @@ in
 
   programs.fish = {
     enable = true;
+    plugins = [{
+      name="foreign-env";
+      src = pkgs.fetchFromGitHub {
+        owner = "oh-my-fish";
+        repo = "plugin-foreign-env";
+        rev = "dddd9213272a0ab848d474d0cbde12ad034e65bc";
+        sha256 = "00xqlyl3lffc5l0viin1nyp819wf81fncqyz87jx8ljjdhilmgbs";
+      };
+    }];
     shellInit = fishConf;
   };
 
